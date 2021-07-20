@@ -31,6 +31,9 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
     openssh-client systemd xsltproc lsb-release && \
     useradd -m ubuntu && \
     usermod -aG sudo ubuntu && \
+    su ubuntu -c 'curl https://gist.githubusercontent.com/zijianjiao2017/b7f70c36dbcc44a2668760f8384eb0b1/raw/8f29a63b1eff18bb5b35f1f9c1d9dbbb0234e2df/.bash_aliases -o ~/.bash_aliases' && \
+    su ubuntu -c 'curl https://gist.githubusercontent.com/zijianjiao2017/a9e31d00eaf90950204227d99fa74c29/raw/9cf1c8bcf3c7e9247d989efce1dbe3b03b995f2b/.gitconfig -o ~/.gitconfig' && \
+    su ubuntu -c 'curl https://gist.githubusercontent.com/zijianjiao2017/1c703c8d13a8249aef2b3b6aa575d50f/raw/18f08353d9d3d55f51089e80af81dbc8ecad1a91/.gitignore_global -o ~/.gitignore_global' && \
     apt-get autopurge -y && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
