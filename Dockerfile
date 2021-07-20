@@ -15,7 +15,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
     apt-get install --no-install-recommends --no-install-suggests -y && \
     dbus systemd systemd-cron rsyslog iproute2 python python-apt sudo bash && \
     apt-get clean && \
-    rm -rf /usr/share/doc/* /usr/share/man/* /var/lib/apt/lists/* /tmp/* /var/tmp/*
+    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 RUN sed -i 's/^\(module(load="imklog")\)/#\1/' /etc/rsyslog.conf
 
