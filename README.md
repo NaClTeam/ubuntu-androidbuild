@@ -19,7 +19,7 @@ docker-compose up -d
 ## Running
 
 ````
-docker-compose exec -it bash
+docker-compose exec -it login -f ubuntu
 ````
 
 ## Testing
