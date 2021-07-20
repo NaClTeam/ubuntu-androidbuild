@@ -19,7 +19,7 @@ docker-compose up -d
 ## Running
 
 ````
-docker-compose exec -it login -f ubuntu
+docker-compose exec ubuntu-androidbuild login -f ubuntu
 ````
 
 ## Testing
@@ -53,7 +53,7 @@ If everything worked, the output should look like this:
 
 Also check the journal logs:
 
-    docker-compose exec journalctl
+    docker-compose exec ubuntu-androidbuild journalctl
 
 The output should look like this:
 
@@ -75,7 +75,7 @@ The output should look like this:
 
 To check for clean shutdown, in one terminal run:
 
-    docker-compose exec journalctl -f
+    docker-compose exec ubuntu-androidbuild journalctl -f
 
 And in another shut down `systemd`:
 
