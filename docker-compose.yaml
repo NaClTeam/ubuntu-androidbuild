@@ -1,7 +1,7 @@
 version: '3'
 services:
-  docker-ubuntu-systemd:
-    container_name: docker-ubuntu-systemd
+  ubuntu-androidbuild:
+    container_name: ubuntu-androidbuild
     build:
       context: .
       dockerfile: Dockerfile
@@ -16,4 +16,4 @@ services:
       - /run
       - /run/lock
       - /tmp
-    hostname: docker-ubuntu-systemd
+    hostname: ubuntu-androidbuild

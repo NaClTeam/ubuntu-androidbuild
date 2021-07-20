@@ -1,15 +1,8 @@
-# docker-ubuntu-systemd
+# ubuntu-androidbuild
 
-A Docker image based on `ubuntu` that runs `systemd` with a minimal set of
-services.
-
-Intended for use testing Ansible roles with Molecule
+A Ubuntu 20.04 Docker image for building Android with systemd.
 
 **Development use only. Do not use in production!**
-
-## Supported tags
-
-* `20.04`
 
 ## But why?
 
@@ -113,6 +106,6 @@ The journalctl logs should look like this on a clean shutdown:
 
 ## License
 
-Copyright © 2021 [XTC-Droid-Port-Team](https://github.com/XTC-Droid-Port-Team). Licensed under [the MIT license](https://github.com/XTC-Droid-Port-Team/docker-ubuntu-systemd/blob/main/LICENSE).
+Copyright © 2021 [XTC-Droid-Port-Team](https://github.com/XTC-Droid-Port-Team). Licensed under [the MIT license](https://github.com/XTC-Droid-Port-Team/ubuntu-androidbuild/blob/main/LICENSE).
 Copyright © 2019 [bdellegrazie](https://github.com/bdellegrazie). Licensed under [the MIT license](https://github.com/docker-ubuntu-systemd/blob/master/LICENSE).
 Copyright © 2016-2018 [Solita](http://www.solita.fi). Licensed under [the MIT license](https://github.com/solita/docker-systemd/blob/master/LICENSE).
