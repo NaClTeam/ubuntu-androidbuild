@@ -19,7 +19,7 @@ docker-compose up -d
 ## Running
 
 ````
-docker-compose exec ubuntu-androidbuild login -f ubuntu
+docker-compose exec ubuntu-androidbuild login -f ubuntu # Or docker exec -it ubuntu-androidbuild login -f ubuntu
 ````
 
 ## Testing
