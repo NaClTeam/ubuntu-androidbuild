@@ -7,6 +7,7 @@ services:
       dockerfile: Dockerfile
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
+      - ./workspace:/workspace
     network_mode: "bridge"
     privileged: true
     security_opt:
