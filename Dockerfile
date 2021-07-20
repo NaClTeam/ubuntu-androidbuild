@@ -27,7 +27,6 @@ RUN find /etc/systemd/system \
 RUN systemctl set-default multi-user.target
 RUN systemctl mask dev-hugepages.mount sys-fs-fuse-connections.mount
 
-VOLUME ["/sys/fs/cgroup", "/tmp", "/run", "/run/lock"]
 STOPSIGNAL SIGRTMIN+3
 
 CMD ["/sbin/init", "--log-target=journal"]

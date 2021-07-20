@@ -15,43 +15,23 @@ Intended for use testing Ansible roles with Molecule
 
 Ansible roles often provide services. Testing these properly requires a service manager.
 
+## Setup
+
+````
+docker-compose up -d
+````
+
 ## Running
 
-You need to add a couple of flags to the `docker run` command to make `systemd`
-play nice with Docker.
-
-We must disable seccomp because `systemd` uses system calls that are not
-allowed by Docker's default seccomp profile:
-
-    --security-opt seccomp=unconfined
-
-Ubuntu's `systemd` expects `/run` and `/run/lock` to be `tmpfs` file systems,
-but it can't mount them itself in an unprivileged container:
-
-    --tmpfs /run
-    --tmpfs /run/lock
-    --tmpfs /tmp
-
-`systemd` needs read-only access to the kernel's cgroup hierarchies:
-
-    -v /sys/fs/cgroup:/sys/fs/cgroup:ro
-
-Allocating a pseudo-TTY is not strictly necessary, but it gives us pretty
-color-coded logs that we can look at with `docker logs`:
-
-    -t
+````
+docker-compose exec -it bash
+````
 
 ## Testing
 
-This image is useless as it's only meant to serve as a base for your own
-images, but you can still create a container from it. First set up your Docker
-host as described in Setup above. Then run the following command:
-
-    docker run -d --name systemd --security-opt seccomp=unconfined --tmpfs /tmp --tmpfs /run --tmpfs /run/lock -v /sys/fs/cgroup:/sys/fs/cgroup:ro -t bdellegrazie/ubuntu-systemd
-
 Check the logs to see if `systemd` started correctly:
 
-    docker logs systemd
+    docker-compose logs
 
 If everything worked, the output should look like this:
 
@@ -78,7 +58,7 @@ If everything worked, the output should look like this:
 
 Also check the journal logs:
 
-    docker exec systemd journalctl
+    docker-compose exec journalctl
 
 The output should look like this:
 
@@ -100,11 +80,11 @@ The output should look like this:
 
 To check for clean shutdown, in one terminal run:
 
-    docker exec systemd journalctl -f
+    docker-compose exec journalctl -f
 
 And in another shut down `systemd`:
 
-    docker stop systemd
+    docker-compose stop
 
 The journalctl logs should look like this on a clean shutdown:
 
