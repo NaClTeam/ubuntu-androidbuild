@@ -13,6 +13,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
     apt-get install -y --no-install-recommends --no-install-suggests ca-certificates && \
     sed -i 's/http:\/\//https:\/\//g' /etc/apt/sources.list && \
     apt-get update && \
+    apt-get upgrade -y --no-install-recommends --no-install-suggests && \
     apt-get install --no-install-recommends --no-install-suggests -y && \
     dbus systemd systemd-cron rsyslog iproute2 python python-apt sudo bash && \
     apt-get clean && \
