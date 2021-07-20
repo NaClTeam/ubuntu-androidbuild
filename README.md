@@ -18,6 +18,8 @@ Ansible roles often provide services. Testing these properly requires a service 
 ## Setup
 
 ````
+mkdir -p workspace
+sudo chown root:root workspace # Add -h option if it's a symlink
 docker-compose up -d
 ````
 
