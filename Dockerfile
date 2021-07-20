@@ -10,7 +10,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
     apt-get update && \
     apt-get upgrade -y --no-install-recommends --no-install-suggests && \
     yes | unminimize && \
-    apt-get install --no-install-recommends --no-install-suggests -y && \
+    apt-get install --no-install-recommends --no-install-suggests -y \
     dbus systemd systemd-cron rsyslog iproute2 python python-apt sudo bash && \
     useradd -m ubuntu && \
     usermod -aG sudo ubuntu && \
