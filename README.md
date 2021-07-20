@@ -9,7 +9,7 @@ Intended for use testing Ansible roles with Molecule
 
 ## Supported tags
 
-* `18.04`
+* `20.04`
 
 ## But why?
 
