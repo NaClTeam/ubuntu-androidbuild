@@ -6,7 +6,9 @@ ENV container=docker LANG=C.UTF-8
 # Enable all repositories
 RUN sed -i 's/# deb/deb/g' /etc/apt/sources.list
 
-RUN apt-get update && \
+RUN export DEBIAN_FRONTEND=noninteractive && \
+    export LC_ALL=C && \
+    apt-get update && \
     apt-get install --no-install-recommends -y \
     dbus systemd systemd-cron rsyslog iproute2 python python-apt sudo bash ca-certificates && \
     apt-get clean && \
