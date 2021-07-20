@@ -19,6 +19,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
     dbus systemd systemd-cron rsyslog iproute2 python python-apt sudo bash && \
     useradd -m ubuntu && \
     usermod -aG sudo ubuntu && \
+    apt-get autopurge -y && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
