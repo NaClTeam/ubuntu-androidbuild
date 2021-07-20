@@ -1,5 +1,5 @@
 FROM ubuntu:20.04
-LABEL maintainer="brett.dellegrazie@gmail.com"
+MAINTAINER ImFatF1sh <zijianjiao2017@gmail.com>
 
 ENV container=docker LANG=C.UTF-8
 
