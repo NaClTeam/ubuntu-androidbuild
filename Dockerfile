@@ -9,8 +9,11 @@ RUN sed -i 's/# deb/deb/g' /etc/apt/sources.list
 RUN export DEBIAN_FRONTEND=noninteractive && \
     export LC_ALL=C && \
     apt-get update && \
-    apt-get install --no-install-recommends --no-install-suggests -y \
-    dbus systemd systemd-cron rsyslog iproute2 python python-apt sudo bash ca-certificates && \
+    apt-get install -y --no-install-recommends --no-install-suggests ca-certificates && \
+    sed -i 's/http:\/\//https:\/\//g' /etc/apt/sources.list && \
+    apt-get update && \
+    apt-get install --no-install-recommends --no-install-suggests -y && \
+    dbus systemd systemd-cron rsyslog iproute2 python python-apt sudo bash && \
     apt-get clean && \
     rm -rf /usr/share/doc/* /usr/share/man/* /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
