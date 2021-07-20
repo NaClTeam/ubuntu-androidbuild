@@ -3,7 +3,6 @@ MAINTAINER ImFatF1sh <zijianjiao2017@gmail.com>
 ENV container=docker LANG=C.UTF-8
 RUN export DEBIAN_FRONTEND=noninteractive && \
     export LC_ALL=C && \
-    sed -i 's/# deb/deb/g' /etc/apt/sources.list && \
     apt-get update && \
     apt-get install -y --no-install-recommends --no-install-suggests apt-utils && \
     apt-get install -y --no-install-recommends --no-install-suggests ca-certificates && \
