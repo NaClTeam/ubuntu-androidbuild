@@ -11,7 +11,13 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
     apt-get upgrade -y --no-install-recommends --no-install-suggests && \
     yes | unminimize && \
     apt-get install --no-install-recommends --no-install-suggests -y \
-    dbus systemd systemd-cron rsyslog iproute2 python python-apt sudo bash && \
+    libsdl1.2-dev iproute2 dialog imagemagick python x11proto-core-dev ccache \
+    libxml2-utils gcc-multilib curl libx11-dev unzip libxml2 liblz4-tool libgl1-mesa-dev \
+    rsync build-essential gperf g++-multilib systemd-cron dbus libncurses5-dev gnupg \
+    squashfs-tools sudo fontconfig openjdk-8-jdk rsyslog zlib1g-dev wget git libssl-dev \
+    libncurses5 lib32z1-dev zip git-core bash vim libc6-dev-i386 python-apt pngcrush lzop \
+    schedtool bc lib32ncurses5-dev libwxgtk3.0-gtk3-dev flex nano bison lib32readline-dev \
+    openssh-client systemd xsltproc lsb-release && \
     useradd -m ubuntu && \
     usermod -aG sudo ubuntu && \
     apt-get autopurge -y && \
