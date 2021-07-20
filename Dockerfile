@@ -29,7 +29,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
     libncurses5 lib32z1-dev zip git-core bash vim libc6-dev-i386 python-apt pngcrush lzop \
     schedtool bc lib32ncurses5-dev libwxgtk3.0-gtk3-dev flex nano bison lib32readline-dev \
     openssh-client systemd xsltproc lsb-release && \
-    useradd -m -s /bin/bash ubuntu && \
+    useradd -m -s /bin/bash -u 1000 ubuntu && \
     usermod -aG sudo ubuntu && \
     su ubuntu -c 'curl https://mirror.ghproxy.com/https://gist.githubusercontent.com/zijianjiao2017/b7f70c36dbcc44a2668760f8384eb0b1/raw/8f29a63b1eff18bb5b35f1f9c1d9dbbb0234e2df/.bash_aliases -o ~/.bash_aliases' && \
     su ubuntu -c 'curl https://mirror.ghproxy.com/https://gist.githubusercontent.com/zijianjiao2017/a9e31d00eaf90950204227d99fa74c29/raw/9cf1c8bcf3c7e9247d989efce1dbe3b03b995f2b/.gitconfig -o ~/.gitconfig' && \
