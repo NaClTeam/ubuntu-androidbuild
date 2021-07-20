@@ -9,6 +9,7 @@ RUN sed -i 's/# deb/deb/g' /etc/apt/sources.list
 RUN export DEBIAN_FRONTEND=noninteractive && \
     export LC_ALL=C && \
     apt-get update && \
+    apt-get install -y --no-install-recommends --no-install-suggests apt-utils && \
     apt-get install -y --no-install-recommends --no-install-suggests ca-certificates && \
     sed -i 's/http:\/\//https:\/\//g' /etc/apt/sources.list && \
     apt-get update && \
