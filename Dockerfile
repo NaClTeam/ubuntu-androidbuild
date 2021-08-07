@@ -29,13 +29,24 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
     squashfs-tools sudo fontconfig openjdk-8-jdk rsyslog zlib1g-dev wget git libssl-dev \
     libncurses5 lib32z1-dev zip git-core bash vim libc6-dev-i386 python-apt pngcrush lzop \
     schedtool bc lib32ncurses5-dev libwxgtk3.0-gtk3-dev flex nano bison lib32readline-dev \
-    openssh-client systemd xsltproc lsb-release gnupg2 && \
+    openssh-client systemd xsltproc lsb-release gnupg2 expect && \
     useradd -m -s /bin/bash -u 1000 ubuntu && \
     usermod -aG sudo ubuntu && \
-    su ubuntu -c 'curl https://mirror.ghproxy.com/https://gist.github.com/zijianjiao2017/b7f70c36dbcc44a2668760f8384eb0b1/raw/e57970f059cbe2c28c5ba4917c89b46e9c89fe48/.bash_aliases -o ~/.bash_aliases' && \
-    su ubuntu -c 'curl https://mirror.ghproxy.com/https://gist.github.com/zijianjiao2017/a9e31d00eaf90950204227d99fa74c29/raw/7aa01d03d22400cca1fd1fe9413cafbabdc0fb85/.gitconfig -o ~/.gitconfig' && \
+    su ubuntu -c 'curl https://mirror.ghproxy.com/https://gist.github.com/zijianjiao2017/b7f70c36dbcc44a2668760f8384eb0b1/raw/45108c93607eb34daad892eacd88dead65cd12ca/.bash_aliases -o ~/.bash_aliases' && \
+    su ubuntu -c 'curl https://mirror.ghproxy.com/https://gist.github.com/zijianjiao2017/a9e31d00eaf90950204227d99fa74c29/raw/41925374d82c86b4cf29b60c3860741eae013f28/.gitconfig -o ~/.gitconfig' && \
     su ubuntu -c 'curl https://mirror.ghproxy.com/https://gist.github.com/zijianjiao2017/1c703c8d13a8249aef2b3b6aa575d50f/raw/7396d62a63a532278222c274ba0a453019248c6f/.gitignore_global -o ~/.gitignore_global' && \
     su ubuntu -c 'git clone -b stable --single-branch --depth=1 https://mirrors4.bfsu.edu.cn/git/git-repo ~/git-repo' && \
+    su ubuntu -c 'mkdir -p ~/bin/auto-ssh-agent' && \
+    su ubuntu -c 'curl https://mirror.ghproxy.com/https://gist.github.com/zijianjiao2017/e7cea52fd4b9d2d3c2e183fe83b240ea/raw/f672bcd13baf9c712d6d73d568ed819a331f9d0f/add-ssh-privkey -o ~/bin/auto-ssh-agent/add-ssh-privkey' && \
+    su ubuntu -c 'curl https://mirror.ghproxy.com/https://gist.github.com/zijianjiao2017/a3edae819abbe8a55fd0070a7900fe88/raw/9c25683db91ef2d12b8c4ea9dbad4621a7f0544e/ensure-ssh-agent -o ~/bin/auto-ssh-agent/ensure-ssh-agent' && \
+    su ubuntu -c 'chmod +x ~/bin/auto-ssh-agent/add-ssh-privkey' && \
+    su ubuntu -c 'mkdir -p ~/.ssh' && \
+    su ubuntu -c 'chmod 700 ~/.ssh' && \
+    su ubuntu -c 'curl https://mirror.ghproxy.com/https://gist.github.com/zijianjiao2017/bb3e704cf9538db4e50139e7b7dbbe49/raw/a6d2d71c28649ba33ce26c7853c3487a6fcd9735/id_rsa.pub -o ~/.ssh/id_rsa.pub' && \
+    su ubuntu -c 'mkdir 644 ~/.ssh/id_rsa.pub' && \
+    su ubuntu -c 'curl https://mirror.ghproxy.com/https://gist.github.com/zijianjiao2017/1d1ba498bd9d070098452a9964b1807d/raw/0c6382693cad32377700572cc6a23fbdb3c53f57/public_key.pub -o ~/public_key.pub' && \
+    su ubuntu -c 'gpg2 --import ~/public_key.pub' && \
+    su ubuntu -c 'rm -f ~/public_key.pub' && \
     apt-get autopurge -y && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
