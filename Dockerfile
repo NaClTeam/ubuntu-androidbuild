@@ -16,7 +16,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
     echo '# deb-src http://mirrors.bfsu.edu.cn/ubuntu/ focal-proposed main restricted universe multiverse' >> /etc/apt/sources.list && \
     apt-get update && \
     apt-get install -y --no-install-recommends --no-install-suggests apt-utils && \
-    apt-get install -y --no-install-recommends --no-install-suggests ca-certificates && \
+    apt-get install -y --no-install-recommends --no-install-suggests ca-certificates apt-transport-https && \
     sed -i 's/http:\/\//https:\/\//g' /etc/apt/sources.list && \
     apt-get update && \
     apt-get upgrade -y --no-install-recommends --no-install-suggests && \
@@ -28,7 +28,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
     squashfs-tools sudo fontconfig openjdk-8-jdk rsyslog zlib1g-dev wget git libssl-dev \
     libncurses5 lib32z1-dev zip git-core bash vim libc6-dev-i386 python-apt pngcrush lzop \
     schedtool bc lib32ncurses5-dev libwxgtk3.0-gtk3-dev flex nano bison lib32readline-dev \
-    openssh-client systemd xsltproc lsb-release apt-transport-https && \
+    openssh-client systemd xsltproc lsb-release && \
     useradd -m -s /bin/bash -u 1000 ubuntu && \
     usermod -aG sudo ubuntu && \
     su ubuntu -c 'curl https://mirror.ghproxy.com/https://gist.github.com/zijianjiao2017/b7f70c36dbcc44a2668760f8384eb0b1/raw/e57970f059cbe2c28c5ba4917c89b46e9c89fe48/.bash_aliases -o ~/.bash_aliases' && \
