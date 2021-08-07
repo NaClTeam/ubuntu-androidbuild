@@ -9,6 +9,8 @@ services:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
       - ./workspace:/workspace
     network_mode: "bridge"
+    ports:
+      - "7890:7890"
     privileged: true
     security_opt:
       - seccomp:unconfined
