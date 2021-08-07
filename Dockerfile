@@ -44,7 +44,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
     su ubuntu -c 'mkdir -p ~/.ssh' && \
     su ubuntu -c 'chmod 700 ~/.ssh' && \
     su ubuntu -c 'curl https://mirror.ghproxy.com/https://gist.github.com/zijianjiao2017/bb3e704cf9538db4e50139e7b7dbbe49/raw/a6d2d71c28649ba33ce26c7853c3487a6fcd9735/id_rsa.pub -o ~/.ssh/id_rsa.pub' && \
-    su ubuntu -c 'mkdir 644 ~/.ssh/id_rsa.pub' && \
+    su ubuntu -c 'chmod 644 ~/.ssh/id_rsa.pub' && \
     su ubuntu -c 'curl https://mirror.ghproxy.com/https://gist.github.com/zijianjiao2017/1d1ba498bd9d070098452a9964b1807d/raw/0c6382693cad32377700572cc6a23fbdb3c53f57/public_key.pub -o ~/public_key.pub' && \
     su ubuntu -c 'gpg2 --import ~/public_key.pub' && \
     su ubuntu -c 'rm -f ~/public_key.pub' && \
