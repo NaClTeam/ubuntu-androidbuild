@@ -49,6 +49,8 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
     su ubuntu -c 'curl https://mirror.ghproxy.com/https://gist.github.com/zijianjiao2017/1d1ba498bd9d070098452a9964b1807d/raw/0c6382693cad32377700572cc6a23fbdb3c53f57/public_key.pub -o ~/public_key.pub' && \
     su ubuntu -c 'gpg2 --import ~/public_key.pub' && \
     su ubuntu -c 'rm -f ~/public_key.pub' && \
+    su ubuntu -c 'mkdir -p ~/.config/htop' && \
+    su ubuntu -c 'curl https://mirror.ghproxy.com/https://gist.github.com/zijianjiao2017/f0937b1432a1e529f6d0d02e62589672/raw/8fa271d878de9f6ff6e7331f55bd4e6170104bb1/htoprc -o ~/.config/htop/htoprc' && \
     apt-get autopurge -y && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
