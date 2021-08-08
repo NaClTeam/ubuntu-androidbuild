@@ -40,7 +40,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
     su ubuntu -c 'git clone -b stable --single-branch --depth=1 https://mirrors4.bfsu.edu.cn/git/git-repo ~/git-repo' && \
     su ubuntu -c 'mkdir -p ~/bin/auto-ssh-agent' && \
     su ubuntu -c 'curl https://mirror.ghproxy.com/https://gist.github.com/zijianjiao2017/e7cea52fd4b9d2d3c2e183fe83b240ea/raw/369611db341a921daaa50a6310d04c84020a1768/add-ssh-privkey -o ~/bin/auto-ssh-agent/add-ssh-privkey' && \
-    su ubuntu -c 'curl https://mirror.ghproxy.com/https://gist.github.com/zijianjiao2017/a3edae819abbe8a55fd0070a7900fe88/raw/9c25683db91ef2d12b8c4ea9dbad4621a7f0544e/ensure-ssh-agent -o ~/bin/auto-ssh-agent/ensure-ssh-agent' && \
+    su ubuntu -c 'curl https://mirror.ghproxy.com/https://gist.github.com/zijianjiao2017/a3edae819abbe8a55fd0070a7900fe88/raw/dafacb6e36f45431cfc0b1d0e3aa00dec4eb1490/ensure-ssh-agent -o ~/bin/auto-ssh-agent/ensure-ssh-agent' && \
     su ubuntu -c 'chmod +x ~/bin/auto-ssh-agent/add-ssh-privkey' && \
     su ubuntu -c 'mkdir -p ~/.ssh' && \
     su ubuntu -c 'chmod 700 ~/.ssh' && \
