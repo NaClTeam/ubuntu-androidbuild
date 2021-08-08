@@ -30,8 +30,8 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
     libncurses5 lib32z1-dev zip git-core bash vim libc6-dev-i386 python-apt pngcrush lzop \
     schedtool bc lib32ncurses5-dev libwxgtk3.0-gtk3-dev flex nano bison lib32readline-dev \
     openssh-client systemd xsltproc lsb-release gnupg2 expect tmux ncdu p7zip-full unrar \
-    neofetch zip unzip tar cpio gzip htop coreutils \
-    bash-completion net-tools && \
+    neofetch zip unzip tar cpio gzip htop coreutils iputils-ping bash-completion net-tools \
+    apt-file && \
     useradd -m -s /bin/bash -u 1000 ubuntu && \
     usermod -aG sudo ubuntu && \
     su ubuntu -c 'curl https://mirror.ghproxy.com/https://gist.github.com/zijianjiao2017/b7f70c36dbcc44a2668760f8384eb0b1/raw/45108c93607eb34daad892eacd88dead65cd12ca/.bash_aliases -o ~/.bash_aliases' && \
