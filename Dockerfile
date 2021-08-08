@@ -1,5 +1,5 @@
 FROM ubuntu:20.04
-MAINTAINER ImFatF1sh <zijianjiao2017@gmail.com>
+MAINTAINER ImFatF1sh <imfatf1sh@protonmail.com>
 ENV container=docker LANG=C.UTF-8
 RUN export DEBIAN_FRONTEND=noninteractive && \
     export LC_ALL=C && \
