@@ -29,8 +29,8 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
     squashfs-tools sudo fontconfig openjdk-8-jdk rsyslog zlib1g-dev wget git libssl-dev \
     libncurses5 lib32z1-dev zip git-core bash vim libc6-dev-i386 python-apt pngcrush lzop \
     schedtool bc lib32ncurses5-dev libwxgtk3.0-gtk3-dev flex nano bison lib32readline-dev \
-    openssh-client systemd xsltproc lsb-release gnupg2 expect tmux screen ncdu p7zip-full \
-    unrar screenfetch neofetch nyancat zip unzip tar cpio gzip htop coreutils \
+    openssh-client systemd xsltproc lsb-release gnupg2 expect tmux ncdu p7zip-full unrar \
+    neofetch zip unzip tar cpio gzip htop coreutils \
     bash-completion net-tools && \
     useradd -m -s /bin/bash -u 1000 ubuntu && \
     usermod -aG sudo ubuntu && \
