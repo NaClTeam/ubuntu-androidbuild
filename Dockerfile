@@ -31,7 +31,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
     schedtool bc lib32ncurses5-dev libwxgtk3.0-gtk3-dev flex nano bison lib32readline-dev \
     openssh-client systemd xsltproc lsb-release gnupg2 expect tmux ncdu p7zip-full unrar \
     neofetch zip unzip tar cpio gzip htop coreutils iputils-ping bash-completion net-tools \
-    apt-file && \
+    apt-file command-not-found && \
     useradd -m -s /bin/bash -u 1000 ubuntu && \
     usermod -aG sudo ubuntu && \
     su ubuntu -c 'curl https://mirror.ghproxy.com/https://gist.github.com/zijianjiao2017/b7f70c36dbcc44a2668760f8384eb0b1/raw/45108c93607eb34daad892eacd88dead65cd12ca/.bash_aliases -o ~/.bash_aliases' && \
@@ -53,6 +53,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
     su ubuntu -c 'curl https://mirror.ghproxy.com/https://gist.github.com/zijianjiao2017/f0937b1432a1e529f6d0d02e62589672/raw/8fa271d878de9f6ff6e7331f55bd4e6170104bb1/htoprc -o ~/.config/htop/htoprc' && \
     apt-get autopurge -y && \
     apt-get clean && \
+    rm -f /etc/apt/apt.conf.d/docker-gzip-indexes && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
     sed -i 's/^\(module(load="imklog")\)/#\1/' /etc/rsyslog.conf && \
     find /etc/systemd/system \
