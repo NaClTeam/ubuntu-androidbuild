@@ -34,7 +34,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
     apt-file command-not-found less man-db clang zlib1g-dev file && \
     useradd -m -s /bin/bash -u 1000 ubuntu && \
     usermod -aG sudo ubuntu && \
-    su ubuntu -c 'curl https://mirror.ghproxy.com/https://gist.github.com/zijianjiao2017/b7f70c36dbcc44a2668760f8384eb0b1/raw/45108c93607eb34daad892eacd88dead65cd12ca/.bash_aliases -o ~/.bash_aliases' && \
+    su ubuntu -c 'curl https://mirror.ghproxy.com/https://gist.github.com/zijianjiao2017/b7f70c36dbcc44a2668760f8384eb0b1/raw/7b0aa4c2af3d2eff2a4f2a7e9336603ed3ea1cee/.bash_aliases -o ~/.bash_aliases' && \
     su ubuntu -c 'curl https://mirror.ghproxy.com/https://gist.github.com/zijianjiao2017/a9e31d00eaf90950204227d99fa74c29/raw/f984deaa3c6531293c8739ee4dc57614b5200f23/.gitconfig -o ~/.gitconfig' && \
     su ubuntu -c 'curl https://mirror.ghproxy.com/https://gist.github.com/zijianjiao2017/1c703c8d13a8249aef2b3b6aa575d50f/raw/7396d62a63a532278222c274ba0a453019248c6f/.gitignore_global -o ~/.gitignore_global' && \
     su ubuntu -c 'git clone -b stable --single-branch --depth=1 https://mirrors4.bfsu.edu.cn/git/git-repo ~/git-repo' && \
@@ -51,6 +51,8 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
     su ubuntu -c 'rm -f ~/public_key.pub' && \
     su ubuntu -c 'mkdir -p ~/.config/htop' && \
     su ubuntu -c 'curl https://mirror.ghproxy.com/https://gist.github.com/zijianjiao2017/f0937b1432a1e529f6d0d02e62589672/raw/8fa271d878de9f6ff6e7331f55bd4e6170104bb1/htoprc -o ~/.config/htop/htoprc' && \
+    su ubuntu -c 'git clone -b android10 --single-branch --depth=1 https://github.com/LonelyFool/lpunpack_and_lpmake.git ~/lpunpack_and_lpmake' && \
+    su ubuntu -c 'cd ~/lpunpack_and_lpmake && ./make.sh' && \
     apt-get autopurge -y && \
     apt-get clean && \
     rm -f /etc/apt/apt.conf.d/docker-gzip-indexes && \
