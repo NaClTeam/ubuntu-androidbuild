@@ -54,7 +54,9 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
     su ubuntu -c 'git clone -b android10 --single-branch --depth=1 https://github.com/LonelyFool/lpunpack_and_lpmake.git ~/lpunpack_and_lpmake' && \
     su ubuntu -c 'cd ~/lpunpack_and_lpmake && ./make.sh' && \
     apt-get autopurge -y && \
+    (dpkg -l | grep '^rc' | awk '{print $2}' | xargs apt-get -y purge) && \
     apt-get clean && \
+    apt-get autoclean all -y && \
     rm -f /etc/apt/apt.conf.d/docker-gzip-indexes && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
     sed -i 's/^\(module(load="imklog")\)/#\1/' /etc/rsyslog.conf && \
