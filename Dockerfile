@@ -38,6 +38,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
     su ubuntu -c 'curl https://mirror.ghproxy.com/https://gist.github.com/zijianjiao2017/a9e31d00eaf90950204227d99fa74c29/raw/f27340a7a45c29c3c195e1cab2487f7628dfbdfa/.gitconfig -o ~/.gitconfig' && \
     su ubuntu -c 'curl https://mirror.ghproxy.com/https://gist.github.com/zijianjiao2017/1c703c8d13a8249aef2b3b6aa575d50f/raw/7396d62a63a532278222c274ba0a453019248c6f/.gitignore_global -o ~/.gitignore_global' && \
     su ubuntu -c 'git clone -b stable --single-branch --depth=1 https://mirrors4.bfsu.edu.cn/git/git-repo ~/git-repo' && \
+    su ubuntu -c 'git clone -b android10 --single-branch --depth=1 https://github.com/LonelyFool/lpunpack_and_lpmake ~/lpunpack_and_lpmake' && \
     su ubuntu -c 'mkdir -p ~/bin/auto-ssh-agent' && \
     su ubuntu -c 'curl https://mirror.ghproxy.com/https://gist.github.com/zijianjiao2017/e7cea52fd4b9d2d3c2e183fe83b240ea/raw/369611db341a921daaa50a6310d04c84020a1768/add-ssh-privkey -o ~/bin/auto-ssh-agent/add-ssh-privkey' && \
     su ubuntu -c 'curl https://mirror.ghproxy.com/https://gist.github.com/zijianjiao2017/a3edae819abbe8a55fd0070a7900fe88/raw/dafacb6e36f45431cfc0b1d0e3aa00dec4eb1490/ensure-ssh-agent -o ~/bin/auto-ssh-agent/ensure-ssh-agent' && \
@@ -51,7 +52,6 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
     su ubuntu -c 'rm -f ~/public_key.pub' && \
     su ubuntu -c 'mkdir -p ~/.config/htop' && \
     su ubuntu -c 'curl https://mirror.ghproxy.com/https://gist.github.com/zijianjiao2017/f0937b1432a1e529f6d0d02e62589672/raw/8fa271d878de9f6ff6e7331f55bd4e6170104bb1/htoprc -o ~/.config/htop/htoprc' && \
-    su ubuntu -c 'git clone -b android10 --single-branch --depth=1 https://github.com/LonelyFool/lpunpack_and_lpmake.git ~/lpunpack_and_lpmake' && \
     su ubuntu -c 'cd ~/lpunpack_and_lpmake && ./make.sh' && \
     apt-get autopurge -y && \
     (dpkg -l | grep '^rc' | awk '{print $2}' | xargs apt-get -y purge) && \
