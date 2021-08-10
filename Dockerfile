@@ -31,7 +31,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
     schedtool bc lib32ncurses5-dev libwxgtk3.0-gtk3-dev flex nano bison lib32readline-dev \
     openssh-client systemd xsltproc lsb-release gnupg2 expect tmux ncdu p7zip-full unrar \
     neofetch zip unzip tar cpio gzip htop coreutils iputils-ping bash-completion net-tools \
-    apt-file command-not-found less man-db clang zlib1g-dev file && \
+    apt-file command-not-found less man-db clang zlib1g-dev file gdebi && \
     useradd -m -s /bin/bash -u 1000 ubuntu && \
     usermod -aG sudo ubuntu && \
     su ubuntu -c 'curl https://mirror.ghproxy.com/https://gist.github.com/zijianjiao2017/b7f70c36dbcc44a2668760f8384eb0b1/raw/f444259e64cdab3217007deb5495664674faafe1/.bash_aliases -o ~/.bash_aliases' && \
