@@ -35,7 +35,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
     useradd -m -s /bin/bash -u 1000 ubuntu && \
     usermod -aG sudo ubuntu && \
     su ubuntu -c 'curl https://mirror.ghproxy.com/https://gist.github.com/zijianjiao2017/b7f70c36dbcc44a2668760f8384eb0b1/raw/8d633614dc17c50144e5598e1db8fbe61cc7e5db/.bash_aliases -o ~/.bash_aliases' && \
-    su ubuntu -c 'curl https://mirror.ghproxy.com/https://gist.github.com/zijianjiao2017/a9e31d00eaf90950204227d99fa74c29/raw/f984deaa3c6531293c8739ee4dc57614b5200f23/.gitconfig -o ~/.gitconfig' && \
+    su ubuntu -c 'curl https://mirror.ghproxy.com/https://gist.github.com/zijianjiao2017/a9e31d00eaf90950204227d99fa74c29/raw/fa76fb8d9dc6c2e8dc408699fe0cd1ad2b7ab4a7/.gitconfig -o ~/.gitconfig' && \
     su ubuntu -c 'curl https://mirror.ghproxy.com/https://gist.github.com/zijianjiao2017/1c703c8d13a8249aef2b3b6aa575d50f/raw/7396d62a63a532278222c274ba0a453019248c6f/.gitignore_global -o ~/.gitignore_global' && \
     su ubuntu -c 'git clone -b stable --single-branch --depth=1 https://mirrors4.bfsu.edu.cn/git/git-repo ~/git-repo' && \
     su ubuntu -c 'mkdir -p ~/bin/auto-ssh-agent' && \
