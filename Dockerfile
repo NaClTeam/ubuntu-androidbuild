@@ -35,7 +35,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
     useradd -m -s /bin/bash -u 1000 ubuntu && \
     usermod -aG sudo ubuntu && \
     su ubuntu -c 'curl https://mirror.ghproxy.com/https://gist.github.com/zijianjiao2017/b7f70c36dbcc44a2668760f8384eb0b1/raw/8d633614dc17c50144e5598e1db8fbe61cc7e5db/.bash_aliases -o ~/.bash_aliases' && \
-    su ubuntu -c 'curl https://mirror.ghproxy.com/https://gist.github.com/zijianjiao2017/a9e31d00eaf90950204227d99fa74c29/raw/f27340a7a45c29c3c195e1cab2487f7628dfbdfa/.gitconfig -o ~/.gitconfig' && \
+    su ubuntu -c 'curl https://mirror.ghproxy.com/https://gist.github.com/zijianjiao2017/a9e31d00eaf90950204227d99fa74c29/raw/75c4f9bed57535b01452fa572edce8b2c54ca8bb/.gitconfig -o ~/.gitconfig' && \
     su ubuntu -c 'curl https://mirror.ghproxy.com/https://gist.github.com/zijianjiao2017/1c703c8d13a8249aef2b3b6aa575d50f/raw/7396d62a63a532278222c274ba0a453019248c6f/.gitignore_global -o ~/.gitignore_global' && \
     su ubuntu -c 'git clone -b stable --single-branch --depth=1 https://mirrors4.bfsu.edu.cn/git/git-repo ~/git-repo' && \
     su ubuntu -c 'git clone -b android10 --single-branch --depth=1 https://mirror.ghproxy.com/https://github.com/LonelyFool/lpunpack_and_lpmake ~/lpunpack_and_lpmake' && \
