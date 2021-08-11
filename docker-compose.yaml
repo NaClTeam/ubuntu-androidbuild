@@ -8,6 +8,7 @@ services:
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
       - ./workspace:/workspace
+      - ./tmp:/tmp
     network_mode: "bridge"
     privileged: true
     security_opt:
@@ -15,5 +16,4 @@ services:
     tmpfs:
       - /run
       - /run/lock
-      - /tmp
     hostname: ubuntu-androidbuild
