@@ -1,4 +1,4 @@
-FROM ubuntu:20.04
+FROM ubuntu:focal
 MAINTAINER ImFatF1sh <imfatf1sh@protonmail.com>
 ENV container=docker LANG=C.UTF-8
 RUN export DEBIAN_FRONTEND=noninteractive && \
