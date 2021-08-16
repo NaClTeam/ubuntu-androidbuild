@@ -12,6 +12,7 @@ services:
     privileged: true
     security_opt:
       - seccomp:unconfined
+      - apparmor:unconfined
     tmpfs:
       - /run
       - /run/lock
