@@ -17,3 +17,5 @@ services:
       - /run
       - /run/lock
     hostname: ubuntu-androidbuild
+    cap_add:
+      - ALL
