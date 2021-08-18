@@ -6,7 +6,7 @@ services:
       dockerfile: Dockerfile
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
-      - ./workspace:/workspace
+      - ./workspace:/mnt/workspace
       - ./tmp:/tmp
     network_mode: "bridge"
     privileged: true

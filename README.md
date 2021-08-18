@@ -13,6 +13,7 @@ Ansible roles often provide services. Testing these properly requires a service 
 ````
 mkdir -p workspace tmp
 sudo chown 1000:1000 workspace tmp # Add -h option if it's a symlink
+sudo chmod 700 workspace tmp
 docker-compose up -d
 ````
 
