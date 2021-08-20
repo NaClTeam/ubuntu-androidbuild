@@ -43,9 +43,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
     su ubuntu -c 'git clone -b stable --single-branch --depth=1 --no-tags https://mirrors4.bfsu.edu.cn/git/git-repo ~/.bin/git-repo' && \
     su ubuntu -c 'git clone -b android10 --single-branch --no-tags --depth=1 https://gitee.com/zijianjiao2017/FORK-ONLY_lpunpack_and_lpmake.git ~/.bin/lpunpack_and_lpmake' && \
     su ubuntu -c 'cd ~/.bin/lpunpack_and_lpmake && ./make.sh' && \
-    su ubuntu -c 'curl https://mirror.ghproxy.com/https://gist.githubusercontent.com/zijianjiao2017/a3edae819abbe8a55fd0070a7900fe88/raw/34e789dc9ffc808f5e2c545712491d20359c9cb8/ensure-ssh-agent -o ~/.bin/auto-ssh-agent/ensure-ssh-agent' && \
-    su ubuntu -c 'curl https://mirror.ghproxy.com/https://gist.githubusercontent.com/zijianjiao2017/e7cea52fd4b9d2d3c2e183fe83b240ea/raw/369611db341a921daaa50a6310d04c84020a1768/add-ssh-privkey -o ~/.bin/auto-ssh-agent/add-ssh-privkey' && \
-    su ubuntu -c 'chmod +x ~/.bin/auto-ssh-agent/add-ssh-privkey' && \
+    su ubuntu -c 'curl https://mirror.ghproxy.com/https://gist.githubusercontent.com/zijianjiao2017/a3edae819abbe8a55fd0070a7900fe88/raw/1686bfd7601e27a37c84fd977dcf81bf403fd739/ensure-ssh-agent -o ~/.bin/auto-ssh-agent/ensure-ssh-agent' && \
     su ubuntu -c 'mkdir -p ~/.ssh' && \
     su ubuntu -c 'chmod 700 ~/.ssh' && \
     su ubuntu -c 'curl https://mirror.ghproxy.com/https://gist.githubusercontent.com/zijianjiao2017/bb3e704cf9538db4e50139e7b7dbbe49/raw/a6d2d71c28649ba33ce26c7853c3487a6fcd9735/id_rsa.pub -o ~/.ssh/id_rsa.pub' && \
