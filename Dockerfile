@@ -36,8 +36,8 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
     usermod -aG sudo ubuntu && \
     cp -avf /etc/environment /etc/environment.original && \
     rm -f ~/.bash_aliases ~/.gitconfig ~/.gitignore_global && \
-    su ubuntu -c 'curl https://mirror.ghproxy.com/https://gist.githubusercontent.com/zijianjiao2017/b7f70c36dbcc44a2668760f8384eb0b1/raw/5941e56798ea15b064a5bb4812436acba58c0d5f/.bash_aliases -o ~/.bash_aliases' && \
-    su ubuntu -c 'curl https://mirror.ghproxy.com/https://gist.githubusercontent.com/zijianjiao2017/a9e31d00eaf90950204227d99fa74c29/raw/fcc7fc88cc07cdd116d2a0aeab0373140ae9ef07/.gitconfig -o ~/.gitconfig' && \
+    su ubuntu -c 'curl https://mirror.ghproxy.com/https://gist.githubusercontent.com/zijianjiao2017/b7f70c36dbcc44a2668760f8384eb0b1/raw/447e438f42a27d20f3f08abb092d56a47035258c/.bash_aliases -o ~/.bash_aliases' && \
+    su ubuntu -c 'curl https://mirror.ghproxy.com/https://gist.githubusercontent.com/zijianjiao2017/a9e31d00eaf90950204227d99fa74c29/raw/fa3f68a66cff38aa7ed951df6d056992836088bc/.gitconfig -o ~/.gitconfig' && \
     su ubuntu -c 'curl https://mirror.ghproxy.com/https://gist.githubusercontent.com/zijianjiao2017/1c703c8d13a8249aef2b3b6aa575d50f/raw/7396d62a63a532278222c274ba0a453019248c6f/.gitignore_global -o ~/.gitignore_global' && \
     su ubuntu -c 'mkdir -p ~/.bin/auto-ssh-agent' && \
     su ubuntu -c 'git clone -b stable --single-branch --depth=1 --no-tags https://mirrors4.bfsu.edu.cn/git/git-repo ~/.bin/git-repo' && \
