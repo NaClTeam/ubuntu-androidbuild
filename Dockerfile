@@ -36,23 +36,23 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
     usermod -aG sudo ubuntu && \
     cp -avf /etc/environment /etc/environment.original && \
     rm -f ~/.bash_aliases ~/.gitconfig ~/.gitignore_global && \
-    su ubuntu -c 'curl https://mirror.ghproxy.com/https://gist.githubusercontent.com/zijianjiao2017/b7f70c36dbcc44a2668760f8384eb0b1/raw/447e438f42a27d20f3f08abb092d56a47035258c/.bash_aliases -o ~/.bash_aliases' && \
-    su ubuntu -c 'curl https://mirror.ghproxy.com/https://gist.githubusercontent.com/zijianjiao2017/a9e31d00eaf90950204227d99fa74c29/raw/fa3f68a66cff38aa7ed951df6d056992836088bc/.gitconfig -o ~/.gitconfig' && \
-    su ubuntu -c 'curl https://mirror.ghproxy.com/https://gist.githubusercontent.com/zijianjiao2017/1c703c8d13a8249aef2b3b6aa575d50f/raw/7396d62a63a532278222c274ba0a453019248c6f/.gitignore_global -o ~/.gitignore_global' && \
+    su ubuntu -c 'curl https://mirror.ghproxy.com/https://gist.githubusercontent.com/4zuk1/8a6dcd8b792b11039390ae4dc4b69b79/raw/41f432af899899de0ef23a7c7100c0c68413a169/.bash_aliases -o ~/.bash_aliases' && \
+    su ubuntu -c 'curl https://mirror.ghproxy.com/https://gist.githubusercontent.com/4zuk1/8ff7910115b63bea25a0c162dd667065/raw/0ae8eec1380e566f4b66460d30226b558eaf7c47/.gitconfig -o ~/.gitconfig' && \
+    su ubuntu -c 'curl https://mirror.ghproxy.com/https://gist.githubusercontent.com/4zuk1/7951e303e24e0b3e1b06eb5f693e22d3/raw/a74f1c3eceb4d765f258b668f914ddfce476aa44/.gitignore_global -o ~/.gitignore_global' && \
     su ubuntu -c 'mkdir -p ~/.bin/auto-ssh-agent' && \
     su ubuntu -c 'git clone -b stable --single-branch --depth=1 --no-tags https://mirrors4.bfsu.edu.cn/git/git-repo ~/.bin/git-repo' && \
     su ubuntu -c 'git clone -b android10 --single-branch --no-tags --depth=1 https://gitee.com/zijianjiao2017/FORK-ONLY_lpunpack_and_lpmake.git ~/.bin/lpunpack_and_lpmake' && \
     su ubuntu -c 'cd ~/.bin/lpunpack_and_lpmake && ./make.sh' && \
-    su ubuntu -c 'curl https://mirror.ghproxy.com/https://gist.githubusercontent.com/zijianjiao2017/a3edae819abbe8a55fd0070a7900fe88/raw/1686bfd7601e27a37c84fd977dcf81bf403fd739/ensure-ssh-agent -o ~/.bin/auto-ssh-agent/ensure-ssh-agent' && \
+    su ubuntu -c 'curl https://mirror.ghproxy.com/https://gist.githubusercontent.com/4zuk1/1dac65056d1b693eb44f71b7fe6dde91/raw/6a50a7e99e26fc93139851c75e9c221669795590/ensure-ssh-agent -o ~/.bin/auto-ssh-agent/ensure-ssh-agent' && \
     su ubuntu -c 'mkdir -p ~/.ssh' && \
     su ubuntu -c 'chmod 700 ~/.ssh' && \
-    su ubuntu -c 'curl https://mirror.ghproxy.com/https://gist.githubusercontent.com/zijianjiao2017/bb3e704cf9538db4e50139e7b7dbbe49/raw/a6d2d71c28649ba33ce26c7853c3487a6fcd9735/id_rsa.pub -o ~/.ssh/id_rsa.pub' && \
+    su ubuntu -c 'curl https://mirror.ghproxy.com/https://gist.githubusercontent.com/4zuk1/a72fe3bb4352f5110931fd100cc5c943/raw/f1daecfc33410969acab35cdf216a0df05fb0071/id_rsa.pub -o ~/.ssh/id_rsa.pub' && \
     su ubuntu -c 'chmod 644 ~/.ssh/id_rsa.pub' && \
-    su ubuntu -c 'curl https://mirror.ghproxy.com/https://gist.githubusercontent.com/zijianjiao2017/1d1ba498bd9d070098452a9964b1807d/raw/0c6382693cad32377700572cc6a23fbdb3c53f57/public_key.pub -o ~/public_key.pub' && \
+    su ubuntu -c 'curl https://mirror.ghproxy.com/https://gist.githubusercontent.com/4zuk1/e4bfbb4c7913236c5b1bf0f33d027fb1/raw/68ad0529bdddac18cc26653fb78bacf6d543cc9b/public_key.pub -o ~/public_key.pub' && \
     su ubuntu -c 'gpg2 --import ~/public_key.pub' && \
     su ubuntu -c 'rm -f ~/public_key.pub' && \
     su ubuntu -c 'mkdir -p ~/.config/htop' && \
-    su ubuntu -c 'curl https://mirror.ghproxy.com/https://gist.githubusercontent.com/zijianjiao2017/f0937b1432a1e529f6d0d02e62589672/raw/8fa271d878de9f6ff6e7331f55bd4e6170104bb1/htoprc -o ~/.config/htop/htoprc' && \
+    su ubuntu -c 'curl https://mirror.ghproxy.com/https://gist.githubusercontent.com/4zuk1/505f0f1c6aee9762d5374b478ad249ec/raw/45f0c5a9b8b25bf39ef1b4278f0329d9104c39d0/htoprc -o ~/.config/htop/htoprc' && \
     ln -s /mnt/workspace /workspace && \
     ln -s /mnt/workspace /home/ubuntu/Workspace && \
     rm -f /etc/apt/apt.conf.d/docker-gzip-indexes && \
