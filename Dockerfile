@@ -5,13 +5,13 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
     export LC_ALL=C && \
     mv /etc/apt/sources.list /etc/apt/sources.list.bak && \
     echo 'deb http://mirrors.bfsu.edu.cn/ubuntu/ focal main restricted universe multiverse' > /etc/apt/sources.list && \
-    echo 'deb-src http://mirrors.bfsu.edu.cn/ubuntu/ focal main restricted universe multiverse' >> /etc/apt/sources.list && \
+    echo '# deb-src http://mirrors.bfsu.edu.cn/ubuntu/ focal main restricted universe multiverse' >> /etc/apt/sources.list && \
     echo 'deb http://mirrors.bfsu.edu.cn/ubuntu/ focal-updates main restricted universe multiverse' >> /etc/apt/sources.list && \
-    echo 'deb-src http://mirrors.bfsu.edu.cn/ubuntu/ focal-updates main restricted universe multiverse' >> /etc/apt/sources.list && \
+    echo '# deb-src http://mirrors.bfsu.edu.cn/ubuntu/ focal-updates main restricted universe multiverse' >> /etc/apt/sources.list && \
     echo 'deb http://mirrors.bfsu.edu.cn/ubuntu/ focal-backports main restricted universe multiverse' >> /etc/apt/sources.list && \
-    echo 'deb-src http://mirrors.bfsu.edu.cn/ubuntu/ focal-backports main restricted universe multiverse' >> /etc/apt/sources.list && \
+    echo '# deb-src http://mirrors.bfsu.edu.cn/ubuntu/ focal-backports main restricted universe multiverse' >> /etc/apt/sources.list && \
     echo 'deb http://mirrors.bfsu.edu.cn/ubuntu/ focal-security main restricted universe multiverse' >> /etc/apt/sources.list && \
-    echo 'deb-src http://mirrors.bfsu.edu.cn/ubuntu/ focal-security main restricted universe multiverse' >> /etc/apt/sources.list && \
+    echo '# deb-src http://mirrors.bfsu.edu.cn/ubuntu/ focal-security main restricted universe multiverse' >> /etc/apt/sources.list && \
     echo '# deb http://mirrors.bfsu.edu.cn/ubuntu/ focal-proposed main restricted universe multiverse' >> /etc/apt/sources.list && \
     echo '# deb-src http://mirrors.bfsu.edu.cn/ubuntu/ focal-proposed main restricted universe multiverse' >> /etc/apt/sources.list && \
     apt-get update && \
@@ -30,7 +30,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
     libncurses5 lib32z1-dev zip git-core bash vim libc6-dev-i386 python-apt pngcrush lzop \
     schedtool bc lib32ncurses5-dev libwxgtk3.0-gtk3-dev flex nano bison lib32readline-dev \
     openssh-client systemd xsltproc lsb-release gnupg2 expect tmux ncdu p7zip-full unrar \
-    neofetch tar cpio gzip htop coreutils iputils-ping bash-completion net-tools apt-file \
+    neofetch tar cpio gzip htop coreutils iputils-ping bash-completion net-tools \
     command-not-found less man-db clang zlib1g-dev file gdebi aria2 bind9-dnsutils && \
     useradd -m -s /bin/bash -u 1000 ubuntu && \
     usermod -aG sudo ubuntu && \
@@ -56,7 +56,6 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
     ln -s /mnt/workspace /workspace && \
     ln -s /mnt/workspace /home/ubuntu/Workspace && \
     rm -f /etc/apt/apt.conf.d/docker-gzip-indexes && \
-    apt-file update && \
     apt-get autopurge -y && \
     (dpkg -l | grep '^rc' | awk '{print $2}' | xargs apt-get -y purge) && \
     apt-get clean && \
