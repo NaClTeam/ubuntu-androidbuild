@@ -1,6 +1,7 @@
 FROM ubuntu:focal
 MAINTAINER ImFatF1sh <imfatf1sh@protonmail.com>
 ENV container=docker LANG=C.UTF-8
+SHELL ["/bin/bash", "-c"]
 RUN export DEBIAN_FRONTEND=noninteractive && \
     export LC_ALL=C && \
     mv /etc/apt/sources.list /etc/apt/sources.list.bak && \
