@@ -20,6 +20,10 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
     echo 'deb http://mirrors4.tuna.tsinghua.edu.cn/ubuntu/ focal-updates main restricted universe multiverse' >> /etc/apt/sources.list && \
     echo 'deb http://mirrors4.tuna.tsinghua.edu.cn/ubuntu/ focal-backports main restricted universe multiverse' >> /etc/apt/sources.list && \
     echo 'deb http://mirrors4.tuna.tsinghua.edu.cn/ubuntu/ focal-security main restricted universe multiverse' >> /etc/apt/sources.list && \
+    echo "Acquire::http::proxy \"http://10.0.0.144:23666/\";" > /etc/apt/apt.conf.d/95proxies && \
+    echo "Acquire::https::proxy \"http://10.0.0.144:23666/\";" >> /etc/apt/apt.conf.d/95proxies && \
+    echo "Acquire::ftp::proxy \"http://10.0.0.144:23666/\";" >> /etc/apt/apt.conf.d/95proxies && \
+    echo "Acquire::socks::proxy \"http://10.0.0.144:23666/\";" >> /etc/apt/apt.conf.d/95proxies && \
     apt-get update && \
     apt-get install -y --no-install-recommends --no-install-suggests apt-utils && \
     apt-get install -y --no-install-recommends --no-install-suggests ca-certificates apt-transport-https && \
