@@ -72,6 +72,23 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
     -not -name '*systemd-user-sessions*' \
     -exec rm \{} \; && \
     systemctl set-default multi-user.target && \
-    systemctl mask dev-hugepages.mount sys-fs-fuse-connections.mount
+    systemctl mask dev-hugepages.mount sys-fs-fuse-connections.mount && \
+    echo 'container=docker' >> /etc/environment && echo 'LC_ALL=C' >> /etc/environment && \
+    echo 'LANG="C.UTF-8"' >> /etc/environment && echo 'NO_RPOXY="localhost,127.0.0.0/8,::1"' >> /etc/environment && \
+    echo 'HTTP_PROXY="http://10.0.0.144:23666/"' >> /etc/environment && \
+    echo 'HTTPS_PROXY="http://10.0.0.144:23666/"' >> /etc/environment && \
+    echo 'RSYNC_PROXY="http://10.0.0.144:23666/"' >> /etc/environment && \
+    echo 'FTP_PROXY="http://10.0.0.144:23666/"' >> /etc/environment && \
+    echo 'no_proxy="localhost,127.0.0.0/8,::1"' >> /etc/environment && \
+    echo 'http_proxy="http://10.0.0.144:23666/"' >> /etc/environment && \
+    echo 'https_proxy="http://10.0.0.144:23666/"' >> /etc/environment && \
+    echo 'rsync_proxy="http://10.0.0.144:23666/"' >> /etc/environment && \
+    echo 'ftp_proxy="http://10.0.0.144:23666/"' >> /etc/environment && \
+    echo 'ALLOW_MISSING_DEPENDENCIES=true' >> /etc/environment && \
+    echo 'CCACHE_DIR="/mnt/workspace/Containers/ubuntu-androidbuild/Caches/CCACHE_HOME"' >> /etc/environment && \
+    echo 'USE_CCACHE=1' >> /etc/environment && echo 'JAVA_TOOL_OPTIONS="-Xmx16G"' >> /etc/environment && \
+    echo '_JAVA_OPTIONS="-Xmx16G"' >> /etc/environment && \
+    source /etc/environment && \
+    ccache -M 30G
 STOPSIGNAL SIGRTMIN+3
 CMD ["/sbin/init", "--log-target=journal"]
