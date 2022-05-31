@@ -1,6 +1,18 @@
 FROM ubuntu:focal
 MAINTAINER ImFatF1sh <imfatf1sh@protonmail.com>
-ENV container=docker LANG=C.UTF-8
+ENV container docker
+ENV LC_ALL C
+ENV LANG C.UTF-8
+ENV NO_RPOXY localhost,127.0.0.0/8,::1
+ENV HTTP_PROXY http://10.0.0.144:23666/
+ENV HTTPS_PROXY http://10.0.0.144:23666/
+ENV RSYNC_PROXY http://10.0.0.144:23666/
+ENV FTP_PROXY http://10.0.0.144:23666/
+ENV no_proxy localhost,127.0.0.0/8,::1
+ENV http_proxy http://10.0.0.144:23666/
+ENV https_proxy http://10.0.0.144:23666/
+ENV rsync_proxy http://10.0.0.144:23666/
+ENV ftp_proxy http://10.0.0.144:23666/
 SHELL ["/bin/bash", "-c"]
 RUN export DEBIAN_FRONTEND=noninteractive && \
     export LC_ALL=C && \
