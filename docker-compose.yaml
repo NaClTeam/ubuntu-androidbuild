@@ -19,3 +19,5 @@ services:
     hostname: ubuntu-androidbuild
     cap_add:
       - ALL
+    stdin_open: true
+    tty: true
