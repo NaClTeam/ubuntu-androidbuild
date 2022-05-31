@@ -41,9 +41,10 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
     schedtool bc lib32ncurses5-dev libwxgtk3.0-gtk3-dev flex nano bison lib32readline-dev \
     openssh-client systemd xsltproc lsb-release gnupg2 expect tmux ncdu p7zip-full unrar \
     neofetch tar cpio gzip htop coreutils iputils-ping bash-completion net-tools passwd \
-    command-not-found less man-db clang zlib1g-dev file gdebi aria2 bind9-dnsutils && \
+    command-not-found less man-db clang zlib1g-dev file gdebi aria2 bind9-dnsutils locales && \
     useradd -m -s /bin/bash -u 1000 ubuntu && \
     usermod -aG adm,cdrom,sudo,dip,plugdev ubuntu && \
+    update-locale && \
     su ubuntu -c 'curl https://gist.githubusercontent.com/ookiineko/787bb6f21bdaacf00f315b3f5f48997e/raw/0d97c1ddc59f572f446e419dcde22e7ada8d8834/.bash_aliases -o ~/.bash_aliases' && \
     su ubuntu -c 'curl https://gist.githubusercontent.com/ookiineko/4c68614abc640e7aaf39c563b3912d81/raw/3ff952d34e163d2390c4a49a358664e75bfe7c37/.gitconfig -o ~/.gitconfig' && \
     su ubuntu -c 'mkdir -p ~/.bin' && \
