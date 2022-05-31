@@ -107,6 +107,7 @@ The journalctl logs should look like this on a clean shutdown:
 
 ## License
 
+Copyright © 2022 [NaClTeam](https://github.com/NaClTeam). Licensed under [the MIT license](https://github.com/NaClTeam/ubuntu-androidbuild/blob/main/LICENSE).
 Copyright © 2021 [XTC-Droid-Port-Team](https://github.com/XTC-Droid-Port-Team). Licensed under [the MIT license](https://github.com/XTC-Droid-Port-Team/ubuntu-androidbuild/blob/main/LICENSE).
 Copyright © 2019 [bdellegrazie](https://github.com/bdellegrazie). Licensed under [the MIT license](https://github.com/docker-ubuntu-systemd/blob/master/LICENSE).
 Copyright © 2016-2018 [Solita](http://www.solita.fi). Licensed under [the MIT license](https://github.com/solita/docker-systemd/blob/master/LICENSE).
