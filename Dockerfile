@@ -1,5 +1,5 @@
 FROM ubuntu:focal
-MAINTAINER ImFatF1sh <imfatf1sh@protonmail.com>
+MAINTAINER Ookiineko <chiisaineko@protonmail.com>
 ENV container docker
 ENV LC_ALL C
 ENV LANG C.UTF-8
