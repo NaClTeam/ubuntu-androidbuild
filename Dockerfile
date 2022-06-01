@@ -30,10 +30,11 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
     sed -i 's/http:\/\//https:\/\//g' /etc/apt/sources.list && \
     apt-get update && \
     apt-get install -y --no-install-recommends --no-install-suggests software-properties-common && \
+    add-apt-repository -y ppa:git-core/ppa && \
     apt-get upgrade -y --no-install-recommends --no-install-suggests && \
     yes | unminimize && \
     apt-get install --no-install-recommends --no-install-suggests -y \
-    libsdl1.2-dev iproute2 dialog imagemagick python x11proto-core-dev ccache \
+    libsdl1.2-dev iproute2 dialog imagemagick python x11proto-core-dev ccache netcat \
     libxml2-utils gcc-multilib curl libx11-dev unzip libxml2 liblz4-tool libgl1-mesa-dev \
     rsync build-essential gperf g++-multilib systemd-cron dbus libncurses5-dev gnupg \
     squashfs-tools sudo fontconfig openjdk-8-jdk rsyslog zlib1g-dev wget git libssl-dev \
@@ -46,7 +47,8 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
     usermod -aG adm,cdrom,sudo,dip,plugdev ubuntu && \
     update-locale && \
     su ubuntu -c 'curl https://gist.githubusercontent.com/ookiineko/787bb6f21bdaacf00f315b3f5f48997e/raw/0d97c1ddc59f572f446e419dcde22e7ada8d8834/.bash_aliases -o ~/.bash_aliases' && \
-    su ubuntu -c 'curl https://gist.githubusercontent.com/ookiineko/4c68614abc640e7aaf39c563b3912d81/raw/3ff952d34e163d2390c4a49a358664e75bfe7c37/.gitconfig -o ~/.gitconfig' && \
+    su ubuntu -c 'curl https://gist.githubusercontent.com/ookiineko/4c68614abc640e7aaf39c563b3912d81/raw/5cf90020cf876e0ad10eaed572665d7ca483e995/.gitconfig -o ~/.gitconfig' && \
+    su ubuntu -c 'curl https://gist.githubusercontent.com/ookiineko/523258de221a3af4d58e2d81e27a6236/raw/1ea267bfbf3b5f095991251b99f4643969fda7c3/.gitignore_global -o ~/.gitignore_global' && \
     su ubuntu -c 'mkdir -p ~/.bin' && \
     su ubuntu -c 'curl https://storage.googleapis.com/git-repo-downloads/repo -o ~/.bin/repo && chmod a+x ~/.bin/repo' && \
     su ubuntu -c 'curl https://gist.githubusercontent.com/ookiineko/51cf2d15aeff0cc491d0ac1edd3c8793/raw/fbc516689f1dae5978d78609df17a8b59ca3224a/ensure-ssh-agent -o ~/.bin/ensure-ssh-agent' && \
