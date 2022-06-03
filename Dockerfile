@@ -33,18 +33,20 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
     add-apt-repository -y ppa:git-core/ppa && \
     apt-get upgrade -y --no-install-recommends --no-install-suggests && \
     yes | unminimize && \
-    apt-get install --no-install-recommends --no-install-suggests -y \
+    apt-get install --no-install-recommends --no-install-suggests -y genisoimage tmate \
     libsdl1.2-dev iproute2 dialog imagemagick python x11proto-core-dev ccache netcat \
     libxml2-utils gcc-multilib curl libx11-dev unzip libxml2 liblz4-tool libgl1-mesa-dev \
-    rsync build-essential gperf g++-multilib systemd-cron dbus libncurses5-dev gnupg \
+    rsync build-essential gperf g++-multilib systemd-cron dbus libncurses5-dev gnupg psmisc \
     squashfs-tools sudo fontconfig openjdk-8-jdk rsyslog zlib1g-dev wget git libssl-dev \
     libncurses5 lib32z1-dev zip git-core bash vim libc6-dev-i386 python-apt pngcrush lzop \
     schedtool bc lib32ncurses5-dev libwxgtk3.0-gtk3-dev flex nano bison lib32readline-dev \
     openssh-client systemd xsltproc lsb-release gnupg2 expect tmux ncdu p7zip-full unrar \
     neofetch tar cpio gzip htop coreutils iputils-ping bash-completion net-tools passwd \
     command-not-found less man-db clang zlib1g-dev file gdebi aria2 bind9-dnsutils locales && \
+    sed -i /etc/java-8-openjdk/security/java.security -re 's/^jdk.tls.disabledAlgorithms=.*/jdk.tls.disabledAlgorithms=SSLv3, RC4, DES, MD5withRSA, \\/g' && \
     useradd -m -s /bin/bash -u 1000 ubuntu && \
     usermod -aG adm,cdrom,sudo,dip,plugdev ubuntu && \
+    sed -i /etc/sudoers -re 's/^%sudo.*/%sudo ALL=(ALL:ALL) NOPASSWD: ALL/g' && \
     update-locale && \
     su ubuntu -c 'curl https://gist.githubusercontent.com/ookiineko/787bb6f21bdaacf00f315b3f5f48997e/raw/0d97c1ddc59f572f446e419dcde22e7ada8d8834/.bash_aliases -o ~/.bash_aliases' && \
     su ubuntu -c 'curl https://gist.githubusercontent.com/ookiineko/4c68614abc640e7aaf39c563b3912d81/raw/5cf90020cf876e0ad10eaed572665d7ca483e995/.gitconfig -o ~/.gitconfig' && \
@@ -55,7 +57,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
     su ubuntu -c 'mkdir -p ~/.ssh' && \
     su ubuntu -c 'chmod 700 ~/.ssh' && \
     su ubuntu -c 'curl https://gist.githubusercontent.com/ookiineko/97395a5f77e491f2b2b7fbc8290529c1/raw/63f089827f1a4e3c75f6c1b533b18f3cd97668ed/id_rsa.pub -o ~/.ssh/id_rsa.pub' && \
-    su ubuntu -c 'curl https://gist.githubusercontent.com/ookiineko/bd5114c8530f30911aa6a64cac75f249/raw/898584bdc0f407582a869ea68c7b04a731da52e7/config -o ~/.ssh/config' && \
+    su ubuntu -c 'curl https://gist.githubusercontent.com/ookiineko/bd5114c8530f30911aa6a64cac75f249/raw/568d421eea10664b419b7f07845190cf67e240c6/config -o ~/.ssh/config' && \
     su ubuntu -c 'chmod 644 ~/.ssh/id_rsa.pub' && \
     su ubuntu -c 'chmod 700 ~/.ssh/config' && \
     ln -s /mnt/workspace /workspace && \
@@ -91,6 +93,6 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
     echo 'USE_CCACHE=1' >> /etc/environment && echo 'JAVA_TOOL_OPTIONS="-Xmx16G"' >> /etc/environment && \
     echo '_JAVA_OPTIONS="-Xmx16G"' >> /etc/environment && \
     source /etc/environment && \
-    ccache -M 30G
+    ccache -M 50G
 STOPSIGNAL SIGRTMIN+3
 CMD ["/sbin/init", "--log-target=journal"]
