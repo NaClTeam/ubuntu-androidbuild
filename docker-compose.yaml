@@ -5,14 +5,14 @@ services:
       context: .
       dockerfile: Dockerfile
     volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+      - /sys/fs/cgroup:/sys/fs/cgroup
       - ./workspace:/mnt/workspace
       - ./tmp:/tmp
     network_mode: "bridge"
     privileged: true
     security_opt:
-      - seccomp:unconfined
-      - apparmor:unconfined
+      - seccomp=unconfined
+      - apparmor=unconfined
     tmpfs:
       - /run
       - /run/lock

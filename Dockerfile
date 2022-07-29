@@ -42,7 +42,8 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
     schedtool bc lib32ncurses5-dev libwxgtk3.0-gtk3-dev flex nano bison lib32readline-dev \
     openssh-client systemd xsltproc lsb-release gnupg2 expect tmux ncdu p7zip-full unrar \
     neofetch tar cpio gzip htop coreutils iputils-ping bash-completion net-tools passwd \
-    command-not-found less man-db clang zlib1g-dev file gdebi aria2 bind9-dnsutils locales && \
+    command-not-found less man-db clang zlib1g-dev file gdebi aria2 bind9-dnsutils locales \
+    device-tree-compiler && \
     sed -i /etc/java-8-openjdk/security/java.security -re 's/^jdk.tls.disabledAlgorithms=.*/jdk.tls.disabledAlgorithms=SSLv3, RC4, DES, MD5withRSA, \\/g' && \
     useradd -m -s /bin/bash -u 1000 ubuntu && \
     usermod -aG adm,cdrom,sudo,dip,plugdev ubuntu && \
