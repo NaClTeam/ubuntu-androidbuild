@@ -1,0 +1,11 @@
+# uncomment to use proxies while building the Docker image
+export NO_RPOXY='localhost,127.0.0.0/8,::1'
+#export HTTP_PROXY='http://10.0.0.144:23666/'
+#export HTTPS_PROXY='http://10.0.0.144:23666/'
+#export RSYNC_PROXY='http://10.0.0.144:23666/'
+#export FTP_PROXY='http://10.0.0.144:23666/'
+export no_proxy='localhost,127.0.0.0/8,::1'
+#export http_proxy='http://10.0.0.144:23666/'
+#export https_proxy='http://10.0.0.144:23666/'
+#export rsync_proxy='http://10.0.0.144:23666/'
+#export ftp_proxy='http://10.0.0.144:23666/'

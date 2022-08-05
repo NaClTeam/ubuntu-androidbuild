@@ -1,0 +1,27 @@
+#!/bin/bash
+# system environment variables
+echo 'container=docker' >> /etc/environment
+echo 'LC_ALL=C' >> /etc/environment
+echo 'LANG="C.UTF-8"' >> /etc/environment
+
+# uncomment if needed
+#echo 'ALLOW_MISSING_DEPENDENCIES=true' >> /etc/environment
+
+# uncomment for ccache
+#CCACHE_DIR='/mnt/workspace/Containers/$(hostname)/Caches/CCACHE_HOME'
+#echo "CCACHE_DIR=\"${CCACHE_DIR}\"" >> /etc/environment
+#echo 'USE_CCACHE=1' >> /etc/environment
+#mkdir -p $CCACHE_DIR
+#ccache -M 50G
+
+# uncomment on 8gig RAM machines
+#
+# Note:
+# you also need to setup both ZRAM and enough SWAP on the host
+# even with that you still cannot build A10+ directly
+# these environment variables are useless to A10+ builds BTW
+# you'll have to manually apply some patches to the AOSP build system instead ig
+#echo 'JAVA_TOOL_OPTIONS="-Xmx16G"' >> /etc/environment
+#echo '_JAVA_OPTIONS="-Xmx16G"' >> /etc/environment
+
+cp -avf /etc/environment /etc/environment.original

@@ -1,0 +1,164 @@
+#!/bin/bash
+
+# default proxies
+LOCAL_DEFAULT_PROXY="http://10.0.0.144"
+LOCAL_DEFAULT_PROXY_PORT="23666"
+
+export no_proxy=localhost,127.0.0.0/8,::1
+export NO_PROXY=$no_proxy
+
+function @set_prxy@() {
+	echo "================================================"
+	default="$LOCAL_DEFAULT_PROXY"
+	echo -n "proxies=[$default]"
+	read input_temp
+	input_temp=${input_temp:-$default}
+	default2="$LOCAL_DEFAULT_PROXY_PORT"
+	echo -n "proxies=$input_temp:[$default2]"
+	read input_temp2
+	input_temp2=${input_temp2:-$default2}
+	echo "================================================"
+	default3=n
+	echo -n "system=[$default3]"
+	read input_temp3
+	input_temp3=${input_temp3:$default3}
+	__set_proxy "${input_temp}" "${input_temp2}"
+	if [ "$input_temp3" = 'y' -o "$input_temp3" = 'yes' ]; then
+		__system_set_prxy
+		echo 'set_prxy: Proxy set for SYSTEM'
+	fi
+	echo 'set_prxy: Proxy set'
+}
+
+function __set_proxy() {
+	export http_proxy="${1}:${2}/"
+	export https_proxy=$http_proxy
+	export ftp_proxy=$http_proxy
+	export rsync_proxy=$http_proxy
+	export HTTP_PROXY=$http_proxy
+	export HTTPS_PROXY=$http_proxy
+	export FTP_PROXY=$http_proxy
+	export RSYNC_PROXY=$http_proxy
+	echo "↓↓↓↓↓↓↓↓↓↓↓↓ 現在の環境変数～！ ↓↓↓↓↓↓↓↓↓↓↓↓"
+	echo "================================================"
+	env | grep -i "proxy"
+	echo "================================================"
+	echo "プロキシが設定されました～！"
+}
+
+function __system_set_prxy() {
+	sudo cp -avf /etc/environment.original /etc/environment
+	sudo -E bash -c 'echo "no_proxy=${no_proxy}" >> /etc/environment'
+	sudo -E bash -c 'echo "ftp_proxy=${http_proxy}" >> /etc/environment'
+	sudo -E bash -c 'echo "https_proxy=${http_proxy}" >> /etc/environment'
+	sudo -E bash -c 'echo "NO_PROXY=${no_proxy}" >> /etc/environment'
+	sudo -E bash -c 'echo "FTP_PROXY=${http_proxy}" >> /etc/environment'
+	sudo -E bash -c 'echo "RSYNC_PROXY=${http_proxy}" >> /etc/environment'
+	sudo -E bash -c 'echo "HTTPS_PROXY=${http_proxy}" >> /etc/environment'
+	sudo -E bash -c 'echo "HTTP_PROXY=${http_proxy}" >> /etc/environment'
+	sudo -E bash -c 'echo "rsync_proxy=${http_proxy}" >> /etc/environment'
+	. /etc/environment
+        export PATH=$HOME/.bin:$PATH
+	echo "↓↓↓↓↓↓↓↓↓↓↓↓ Now /etc/environment ↓↓↓↓↓↓↓↓↓↓↓↓"
+	echo "================================================"
+	cat /etc/environment | grep -i "proxy"
+	echo "================================================"
+	echo "/etc/environment Setted proxy."
+	sudo -E bash -c 'echo "Acquire::http::proxy \"${http_proxy}\";" > /etc/apt/apt.conf.d/95proxies'
+	sudo -E bash -c 'echo "Acquire::https::proxy \"${http_proxy}\";" >> /etc/apt/apt.conf.d/95proxies'
+	sudo -E bash -c 'echo "Acquire::ftp::proxy \"${http_proxy}\";" >> /etc/apt/apt.conf.d/95proxies'
+	sudo -E bash -c 'echo "Acquire::socks::proxy \"${http_proxy}\";" >> /etc/apt/apt.conf.d/95proxies'
+	echo "↓↓↓↓↓↓↓↓↓↓↓↓ Now /etc/apt/apt.conf.d/95proxies ↓↓↓↓↓↓↓↓↓↓↓↓"
+	echo "================================================"
+	cat /etc/apt/apt.conf.d/95proxies
+	echo "================================================"
+	echo "/etc/apt/apt.conf.d/95proxies Setted proxy."
+}
+
+function @unset_prxy@() {
+	unset_system=0
+	if [ "$#" -eq 1 ]; then
+		if [ "$1" = '-s' -o "$1" = '--system' ]; then
+			unset_system=1
+		else
+			echo "unset_prxy: Unknown args: $1"
+			return 1
+		fi
+	elif [ "$#" -ne 0 ]; then
+		echo "unset_prxy: Too many args"
+		return 1
+	fi
+	unset http_proxy
+	unset https_proxy
+	unset ftp_proxy
+	unset rsync_proxy
+	unset HTTP_PROXY
+	unset HTTPS_PROXY
+	unset FTP_PROXY
+	unset RSYNC_PROXY
+	echo "↓↓↓↓↓↓↓↓↓↓↓↓ 現在の環境変数～！ ↓↓↓↓↓↓↓↓↓↓↓↓"
+	echo "================================================"
+	env | grep -i "proxy"
+	echo "================================================"
+	echo "プロキシ設定がキャンセルされました！ 〜"
+	if [ "$unset_system" -eq 1 ]; then
+		__system_unset_prxy
+		echo 'unset_prxy: Proxy unset for SYSTEM'
+	fi
+	echo 'unset_prxy: Proxy unset'
+}
+
+function __system_unset_prxy() {
+	sudo cp -avf /etc/environment.original /etc/environment
+	echo "↓↓↓↓↓↓↓↓↓↓↓↓ Now /etc/environment ↓↓↓↓↓↓↓↓↓↓↓↓"
+	echo "================================================"
+	sudo cat /etc/environment | grep -i "proxy"
+	echo "================================================"
+	echo "/etc/environment Unsetted proxy."
+	sudo bash -c 'echo "" > /etc/apt/apt.conf.d/95proxies'
+	echo "↓↓↓↓↓↓↓↓↓↓↓↓ Now /etc/apt/apt.conf.d/95proxies ↓↓↓↓↓↓↓↓↓↓↓↓"
+	echo "================================================"
+	cat /etc/apt/apt.conf.d/95proxies
+	echo "================================================"
+	echo "/etc/apt/apt.conf.d/95proxies Unsetted proxy."
+}
+
+# uncomment for macOS
+#function @linux_clear_shell@() {
+#	printf '\e[H\e[3J'
+#}
+#
+# alias clear=@linux_clear_shell@
+
+function @hook_change_id@() {
+	git status && curl -Lo .git/hooks/commit-msg https://review.lineageos.org/tools/hooks/commit-msg && chmod u+x .git/hooks/commit-msg && echo "Done."
+}
+
+function @better_apt_install@() {
+	sudo apt install --no-install-recommends --no-install-suggests $*
+}
+
+function @clean_system_log@() {
+	sudo journalctl --vacuum-time=1m --vacuum-size=1G
+}
+
+function @ensure_ssh_agent@() {
+	source ~/.bin/ensure-ssh-agent
+}
+
+function __watch_something() {
+	watch -c -d -e -n 1 -t -x $*
+}
+
+function @purge_leftover_configs@() { 
+	sudo dpkg -l | grep '^rc' | awk '{print $2}' | sudo xargs apt -y purge
+}
+
+export GPG_TTY=$(tty)
+export PATH=$HOME/.bin:$PATH
+
+# uncomment to set proxy on login
+# __set_proxy http://10.0.0.144 23666
+# echo -e 'Welcome come back! You may need to:\n@unset_prxy@\n@ensure_ssh_agent@'
+
+echo -e 'Welcome come back! You may need to:\n@set_prxy@\n@ensure_ssh_agent@'
