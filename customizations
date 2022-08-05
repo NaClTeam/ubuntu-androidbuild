@@ -1,12 +1,12 @@
 # personal tweaks here
-UAB_APT_M='archive.ubuntu.com'
-UAB_APT_SEC_M='security.ubuntu.com'
-UAB_GIT_REPO_M='https://storage.googleapis.com/git-repo-downloads/repo'
+#UAB_APT_M='archive.ubuntu.com'
+#UAB_APT_SEC_M='security.ubuntu.com'
+#UAB_GIT_REPO_M='https://storage.googleapis.com/git-repo-downloads/repo'
 
 # uncomment these in Mainland China
-#UAB_APT_M='mirrors4.tuna.tsinghua.edu.cn'
-#UAB_APT_SEC_M="${UAB_APT_M}"
-#UAB_GIT_REPO_M="https://${UAB_APT_M}/git/git-repo"
+UAB_APT_M='mirrors4.tuna.tsinghua.edu.cn'
+UAB_APT_SEC_M="${UAB_APT_M}"
+UAB_GIT_REPO_M="https://${UAB_APT_M}/git/git-repo"
 
 echo "Using APT mirror '${UAB_APT_M}'"
 echo "Using APT security mirror '${UAB_APT_SEC_M}'"
