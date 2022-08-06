@@ -25,7 +25,9 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
     add-apt-repository -y ppa:git-core/ppa && \
     apt-get upgrade -y --no-install-recommends --no-install-suggests && \
     yes | unminimize && \
-    apt-get install --no-install-recommends --no-install-suggests -y genisoimage tmate \
+    i=0 && \
+    while [ $i -eq 0 ]; do \
+    apt-get --fix-missing install --no-install-recommends --no-install-suggests -y \
     libsdl1.2-dev iproute2 dialog imagemagick python x11proto-core-dev ccache netcat \
     libxml2-utils gcc-multilib curl libx11-dev unzip libxml2 liblz4-tool libgl1-mesa-dev \
     rsync build-essential gperf g++-multilib systemd-cron dbus libncurses5-dev gnupg psmisc \
@@ -35,7 +37,8 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
     openssh-client systemd xsltproc lsb-release gnupg2 expect tmux ncdu p7zip-full unrar \
     neofetch tar cpio gzip htop coreutils iputils-ping bash-completion net-tools passwd \
     command-not-found less man-db clang zlib1g-dev file gdebi aria2 bind9-dnsutils locales \
-    device-tree-compiler kmod rename findutils && \
+    device-tree-compiler kmod rename findutils genisoimage tmate; \
+    [[ "$?" -eq 0 ]] && i=1; done && \
     sed -i /etc/java-8-openjdk/security/java.security -re 's/^jdk.tls.disabledAlgorithms=.*/jdk.tls.disabledAlgorithms=SSLv3, RC4, DES, MD5withRSA, \\/g' && \
     useradd -m -s /bin/bash -u 1000 ubuntu && \
     usermod -aG adm,cdrom,sudo,dip,plugdev ubuntu && \
