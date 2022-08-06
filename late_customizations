@@ -7,8 +7,8 @@ echo 'LANG="C.UTF-8"' >> /etc/environment
 # uncomment if needed
 #echo 'ALLOW_MISSING_DEPENDENCIES=true' >> /etc/environment
 
-# uncomment for ccache
-#CCACHE_DIR='/mnt/workspace/Containers/$(hostname)/Caches/CCACHE_HOME'
+# uncomment for ccach
+#CCACHE_DIR='/mnt/workspace/Containers/ubuntu-androidbuild/Caches/CCACHE_HOME'
 #echo "CCACHE_DIR=\"${CCACHE_DIR}\"" >> /etc/environment
 #echo 'USE_CCACHE=1' >> /etc/environment
 #mkdir -p $CCACHE_DIR
