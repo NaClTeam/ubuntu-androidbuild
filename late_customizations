@@ -11,8 +11,6 @@ echo 'LANG="C.UTF-8"' >> /etc/environment
 #CCACHE_DIR='/mnt/workspace/Containers/ubuntu-androidbuild/Caches/CCACHE_HOME'
 #echo "CCACHE_DIR=\"${CCACHE_DIR}\"" >> /etc/environment
 #echo 'USE_CCACHE=1' >> /etc/environment
-#mkdir -p $CCACHE_DIR
-#ccache -M 50G
 
 # uncomment on 8gig RAM machines
 #
